@@ -1,6 +1,6 @@
 var fs = require('fs');
 var cheerio = require('cheerio');
-var content = fs.readFileSync('/Users/aseemaggarwal/magichappens/newschool/courses/data-structures/datastructures/week2-assignment/dumps/1.html');
+var content = fs.readFileSync('dumps/1.html');
 
 var $ = cheerio.load(content);
 //Our table resides next to the form element
@@ -19,5 +19,5 @@ $("tbody tr",$("form").next()).each(function(i,trel){
       address += "; ";
     }
   });
-  fs.appendFileSync('/Users/aseemaggarwal/magichappens/newschool/courses/data-structures/datastructures/week2-assignment/dumps/address-1.txt',address+"\n");
+  fs.appendFileSync('dumps/address-1.txt',address+"\n");
 });

@@ -16,7 +16,7 @@ var WebParser = (function(){
   var readUrl = function(url,file,callback){
       request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            fs.writeFileSync('/Users/aseemaggarwal/magichappens/newschool/courses/data-structures/datastructures/week3-assignment/dumps/'+file, body);
+            fs.writeFileSync('dumps/'+file, body);
             callback(body);
         }
         else {

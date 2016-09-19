@@ -37,7 +37,7 @@ var parseBody = function(content){
 
 var getMapLocation = function(addresses,ct){
     if(ct >= addresses.length){
-      fs.writeFileSync('/Users/aseemaggarwal/magichappens/newschool/courses/data-structures/datastructures/week3-assignment/dumps/geoLoc.dump',JSON.stringify(meetingsLoc));
+      fs.writeFileSync('dumps/geoLoc.dump',JSON.stringify(meetingsLoc));
       return;
     }
     var add = addresses[ct];
@@ -60,9 +60,9 @@ var getMapLocation = function(addresses,ct){
 
 var file = "aa.dump";
 try{
-    var body = fs.readFileSync('/Users/aseemaggarwal/magichappens/newschool/courses/data-structures/datastructures/week3-assignment/dumps/'+file);
-}
-catch(err){
+    var body = fs.readFileSync('dumps/'+file);
+}catch(err){
+
 }
 if(body){
   parseBody(body);

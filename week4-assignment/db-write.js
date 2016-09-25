@@ -1,8 +1,9 @@
 var request = require('request');
 var fs = require('fs');
 
-    var body = fs.readFileSync('dumps/geoLoc.dump');
+    var body = fs.readFileSync('dumps/meetings.dump');
     var meetingsData = JSON.parse(body);
+    console.log(meetingsData.length);
     
     // Connection URL
     var url = 'mongodb://' + process.env.IP + ':27017/aa';
@@ -10,6 +11,7 @@ var fs = require('fs');
     // Retrieve
     var MongoClient = require('mongodb').MongoClient; // npm install mongodb
 
+    
     MongoClient.connect(url, function(err, db) {
         if (err) {return console.dir(err);}
 
@@ -17,9 +19,9 @@ var fs = require('fs');
 
         // THIS IS WHERE THE DOCUMENT(S) IS/ARE INSERTED TO MONGO:
         for (var i=0; i < meetingsData.length; i++) {
-            collection.insert(meetingsData[i]);
+            collection.insert({"name" : meetingsData[i].name,"address" :meetingsData[i].detailed_address});
         }
         db.close();
-
+    
     }); //MongoClient.connect
 

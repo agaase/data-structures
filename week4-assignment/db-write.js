@@ -6,7 +6,7 @@ var fs = require('fs');
     console.log(meetingsData.length);
     
     // Connection URL
-    var url = 'mongodb://' + process.env.IP + ':27017/aa';
+    var url = 'mongodb://127.0.0.1:27017/aa';
 
     // Retrieve
     var MongoClient = require('mongodb').MongoClient; // npm install mongodb

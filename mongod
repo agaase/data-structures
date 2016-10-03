@@ -1,1 +1,1 @@
-mongod --bind_ip=$IP --dbpath=mongo_data --nojournal --rest "$@"
+mongod --bind_ip=127.0.0.1 --dbpath=mongo_data --nojournal --rest "$@"

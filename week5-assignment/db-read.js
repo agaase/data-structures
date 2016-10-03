@@ -20,6 +20,8 @@ MongoClient.connect(url, function(err, db) {
     getMeetings(collection,0);
 });
 
+/**This creates a report based on latency and actual data
+**/
 var report = function(){
     var days = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
     $("body").css({

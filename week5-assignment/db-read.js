@@ -59,13 +59,14 @@ var report = function(){
 var getMeetings = function(collection,ct){
   if(ct==25){
     dbc.close();
-    report();
+    //report();
     return;
   }
   var time = new Date().getTime();
   collection.aggregate( [{ $match : { 'time.day' :  1, 'time.time' : {$gt : 7}, 'time.a_p' : "pm" }}],
     function(err, results) {
       data = results;
+      console.log(new Date().getTime()-time + " -- "+ data.length);
       latency.push(new Date().getTime()-time);
       getMeetings(collection,++ct);
     }

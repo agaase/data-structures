@@ -1,6 +1,6 @@
 var five = require("johnny-five");
 var board = new five.Board();
-var DBWriter = require("./index.js");
+var DBWriter = require("./dbwriter.js");
 
 DBWriter.createTable();
 

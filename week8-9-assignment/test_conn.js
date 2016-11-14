@@ -2,10 +2,10 @@ var pg = require('pg');
 var fs = require('fs');
 
 // connection string
-var un = process.env.PG_USERNAME; // aws db username
-var pw = process.env.PG_PASSWORD; // aws db password
+var un = "jainsambhav"; // aws db username
+var pw = "jainsambhav"; // aws db password
 var db = 'postgres'; // aws db database name
-var ep = 'bestgpsproject.c55t6l9g9dv3.us-west-2.rds.amazonaws.com'; // aws db endpoint
+var ep = 'abc.cucawtfwbfkq.us-west-2.rds.amazonaws.com:5432/'; // aws db endpoint
 var conString = "postgres://" + un + ":" + pw + "@" + ep + "/" + db;
 
 var dropTable = "DROP TABLE IF EXISTS laptop_position;"
@@ -87,44 +87,14 @@ var modifyInsertQuery = function(data){
 /**
 This is where I run the query.
 */
-var runQ = function(q,c){
+var runQ = function(){
     pg.connect(conString, function(err, client, done) {
-        if (err) {
-            return console.error('error fetching client from pool', err);
-        }
-
-        client.query(q, function(err, result) {
-            //call `done()` to release the client back to the pool
-            done();
-            c(err,result);
-        });
+        console.log(err);
     })
 }
 
 /** Chain of queries **/
-runQ(dropTable,function(e,r){
-    runQ(createTableQuery,function(e,r){
-        if (e) {
-            return console.error('error running query 1', e);
-        }else{
-            var data = getValues();
-            var q = modifyInsertQuery(data);
-            console.log(q);
-            runQ(q,function(e,r){
-                if (e) {
-                    return console.error('error running query 2', e);
-                }else{
-                    runQ(complexQuery,function(e,r){
-                        var rows = r.rows;
-                        for(var i=0;i<rows.length;i++){
-                            console.log(rows[i]);
-                        }
-                    })    
-                }
-            })
-        }
-    });
-});
+runQ();
 
 
 

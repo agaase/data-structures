@@ -69,12 +69,9 @@ var DBWriter = (function(){
             });
         },
 
-        fetchData : function(){
+        fetchData : function(callback){
             runQ(complexQuery,function(e,r){
-                    var rows = r.rows;
-                    for(var i=0;i<rows.length;i++){
-                        console.log(rows[i]);
-                    }
+                    callback(r.rows);
                 });
         }
 

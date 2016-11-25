@@ -10,6 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "johnny-five": "^0.10.3",
-    "pg": "^6.1.0"
+    "pg": "^6.1.0",
+    "express": "~4.9.x",
+    "request": "2.58.0",
+    "cors": "2.7.1"
   }
 }

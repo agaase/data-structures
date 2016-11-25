@@ -2,7 +2,7 @@ var pg = require('pg');
 var fs = require('fs');
 
 
-var DBWriter = (function(){
+var DBOp = (function(){
 
     // connection string
     var un = process.env.PG_USERNAME; // aws db username

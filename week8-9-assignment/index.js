@@ -1,7 +1,7 @@
 var express = require('express');
 var req = require('request');
 var cors = require('cors');
-var DBWriter = require("./dbwriter.js");
+var DBOp = require("./dbop.js");
 
 var app = express();
 app.use(cors());
@@ -11,7 +11,7 @@ app.set('port', 8383);
 
 //rendering the home page
 app.get("/",function(request, response) {
-    DBWriter.fetchData(function(d){
+    DBOp.fetchData(function(d){
       response.end(JSON.stringify(d));
     });
 });

@@ -79,6 +79,6 @@ var DBWriter = (function(){
 
 })();
 
-module.exports = DBWriter;
+module.exports = DBOp;
 
 

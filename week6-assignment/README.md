@@ -1,5 +1,8 @@
-## Week 6 Assignment
+#AA Assignment
 
-### Main files 
-1. aadata.js - This is where all the code to fetch data is writtern. 
-2. index.js - The server code resides here.
+### Code
+ - aadata.js - module to carry out DB operations
+ - index.js - server code to receive request
+
+### API end point
+http://35.163.164.222:8383/

@@ -5,4 +5,4 @@
  - index.js - server code to receive request
 
 ### API end point
-http://35.163.164.222:8383/
+http://35.163.164.222:8181/

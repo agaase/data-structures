@@ -1,7 +1,8 @@
 var AAData = (function(){
 
+  //This is where my mongo db resides
   var url = 'mongodb://127.0.0.1:27017/aa';
-  var MongoClient = require('mongodb').MongoClient; // npm install mongodb
+  var MongoClient = require('mongodb').MongoClient;
 
   var cleanName = function(name){
     return name.replace(/\s\((.)+\)/g,"").replace(/[\\;,-]/g,"").trim();

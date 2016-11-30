@@ -1,5 +1,8 @@
-## Week 6 Assignment
+#AA Assignment
 
-### Main files 
-1. db-read.js - Reads meetings from mongodb
-2. data-cleaner.js - Node package to clean the data. As of now cleans address and name of the meeting.
+### Code
+ - aadata.js - module to carry out DB operations
+ - index.js - server code to receive request
+
+### API end point
+http://35.163.164.222:8181/

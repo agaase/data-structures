@@ -1,8 +1,8 @@
 var five = require("johnny-five");
 var board = new five.Board();
-var DBWriter = require("./dbwriter.js");
+var DBOp = require("./dbop.js");
 
-DBWriter.createTable();
+DBOp.createTable();
 
 board.on("ready", function() {
   console.log("7----------");
@@ -28,9 +28,9 @@ board.on("ready", function() {
     };
     if(data.length >=4){
       console.log("calling insert");
-      DBWriter.insertIntoTable(data);
+      DBOp.insertIntoTable(data);
       data = [];
-      DBWriter.fetchData();
+      DBOp.fetchData();
     }
     data.push(obj);
   });

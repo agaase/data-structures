@@ -31,7 +31,10 @@ var AAData = (function(){
                data.push({
                 "name" : name,
                 "address" : doc.address,
-                "geoAddress" : geo_address
+                "geoAddress" : geo_address,
+		"time" : doc.time,
+		"latLong" : doc.latLong,
+		"types" : doc.types
                });
             } else {
                db.close();

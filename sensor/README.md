@@ -1,6 +1,6 @@
-###Arduino Sensor Assignment
+#Arduino Sensor Assignment
 
-#### How do I use my Computer?
+## How do I use my Computer?
 
 With this web application I try to analyse how I use computer is used physically by collecting data using an [Adafruit Ultimate GPS Logger Shield](https://www.adafruit.com/product/1272). The front end of the application shows different parameters like altitude, latitude, longitude and angle for different types of sessions when Iam using my computer.
 

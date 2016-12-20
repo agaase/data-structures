@@ -21,7 +21,7 @@ app.get("/data",function(request, response) {
 });
 
 //rendering the home page
-app.post("/events",function(request, response) {
+app.get("/events",function(request, response) {
     DBOp.fetchEvents(function(d){
       response.end(JSON.stringify(d));
     });
@@ -29,8 +29,8 @@ app.post("/events",function(request, response) {
 
 
 //rendering the home page
-app.post("/eventdata",function(request, response) {
-    DBOp.fetchEventData(request.body.event,function(d){
+app.get("/events/:event",function(request, response) {
+    DBOp.fetchEventData(request.params.event,function(d){
       response.end(JSON.stringify(d));
     });
 });

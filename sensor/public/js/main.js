@@ -4,7 +4,7 @@ var SensorGPS = (function(){
    
     function fetchEvents(callback){
       $.ajax({
-           method: "POST",
+           method: "GET",
            data: null,
            contentType: 'application/json',
            url: "/events",
@@ -70,7 +70,7 @@ var SensorGPS = (function(){
       marginTop += margin/2;
       //Altitude
       var params = getParams(d,"altitude");
-      renderGraph(graphs.append("g"),params[0],params[1],marginTop,hi,ww,"altitude");
+      renderGraph(graphs.append("g"),params[0],10,marginTop,hi,ww,"altitude");
       marginTop += margin+hi;
       //Geolocation, latitude
       var maxLat = 0,maxLong = 0, arrLat=[], arrLong=[];
@@ -97,10 +97,11 @@ var SensorGPS = (function(){
           "diff"  : diffLong
         });
       }
-      renderGraph(graphs.append("g"),arrLat,maxLat,marginTop,hi,ww,"latitude");
+      
+      renderGraph(graphs.append("g"),arrLat,0.00039199999999794954/2,marginTop,hi,ww,"latitude");
       marginTop += margin+hi;
 
-      renderGraph(graphs.append("g"),arrLong,maxLong,marginTop,hi,ww,"longitude");
+      renderGraph(graphs.append("g"),arrLong,0.0005979999999965457/2,marginTop,hi,ww,"longitude");
       marginTop += margin+hi;
 
       //Angle
@@ -134,12 +135,10 @@ var SensorGPS = (function(){
 
     function fetchEventData(callback){
       $.ajax({
-           method: "POST",
-           data: JSON.stringify({
-            "event" : selectedEvent
-           }),
+           method: "GET",
+           data: null,
            contentType: 'application/json',
-           url: "/eventdata",
+           url: "/events/"+selectedEvent,
          })
          .done(function(data) {
            data  =  JSON.parse(data);

@@ -16,7 +16,7 @@ The application shows the timeline of a session for all the parameters. For exam
  There is also a session called `correction` which is basically recorded with my computer in an idle position with no disturbances. This is to check for any kind of invalid data produced which I can account for.
 
 ### Project structure
-This is a node project with the actual package management being done by npm. As such if you are familiar with any node project structure it should feed similar. 
+This is a node project with the actual package management being done by npm. As such if you are familiar with any node project structure it should feel similar. 
 
 ### Codebase
 

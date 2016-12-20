@@ -1,0 +1,54 @@
+body, html {
+  height: 100%;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #575757; }
+
+.left .page-header {
+  height: 15vh;
+  padding-top: 5vh;
+  padding-left: 5vh;
+  overflow: hidden; }
+.left #map {
+  height: 75vh;
+  margin-top: 5vh;
+  margin-left: 5vh;
+  border: 2px solid #575757; }
+
+.right .dd {
+  margin-top: 10vh;
+  padding-left: 15px; }
+  .right .dd button {
+    background-color: transparent;
+    border: 1px solid #575757; }
+  .right .dd ul li {
+    padding: 10px;
+    cursor: pointer; }
+.right .meetings {
+  height: 75vh;
+  margin-top: 5vh;
+  overflow: scroll; }
+  .right .meetings .location {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    cursor: pointer; }
+    .right .meetings .location.active {
+      background-color: #ddd; }
+      .right .meetings .location.active .meeting .secondary {
+        display: block; }
+    .right .meetings .location .title {
+      font-weight: bold; }
+    .right .meetings .location .meeting {
+      font-size: 90%;
+      padding-top: 1vh;
+      padding-left: 2%; }
+      .right .meetings .location .meeting .primary .time, .right .meetings .location .meeting .primary .name {
+        display: inline-block; }
+      .right .meetings .location .meeting .primary .time {
+        font-weight: bold; }
+      .right .meetings .location .meeting .secondary {
+        font-size: 90%;
+        display: none; }
+
+/*# sourceMappingURL=main.css.map */

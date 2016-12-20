@@ -1,0 +1,80 @@
+$bg-color: #f9f9f9;
+$main: #575757;
+$main-light: #ddd;
+
+body,html{
+	height: 100%;
+	padding: 0;
+	background-color: $bg-color;
+	color: $main;
+}
+
+.left{
+    .page-header{
+    	height: 15vh;
+    	padding-top: 5vh;
+    	padding-left: 5vh;
+    	overflow: hidden;
+    }
+	#map {
+	  height: 75vh;
+	  margin-top: 5vh;
+	  margin-left: 5vh;
+	  border: 2px solid $main;
+	}	
+}
+.right{
+	.dd{
+		margin-top: 10vh;
+		padding-left: 15px;
+		button{
+			background-color: transparent;
+			border: 1px solid $main;
+		}
+		ul li{
+			padding: 10px;
+			cursor: pointer;
+		}
+	}
+	.meetings{
+		height: 75vh;
+		margin-top: 5vh;
+		overflow: scroll;
+		.location{
+			padding: 15px;
+			border-bottom: 1px solid $main-light;
+			position:relative;
+			cursor: pointer;
+			&.active{
+				background-color: $main-light;
+				.meeting{
+					.secondary{
+						display: block;
+					}
+				}
+				
+			}
+			.title{
+				font-weight: bold;
+			}
+			.meeting{
+				font-size: 90%;
+				padding-top: 1vh;
+				padding-left: 2%;
+				.primary{
+					.time,.name{
+						display: inline-block;
+					}
+					.time{
+						font-weight: bold;
+					}
+				}
+				.secondary{
+					font-size: 90%;
+					display: none;
+				}
+			}	
+		}
+		
+	}
+}

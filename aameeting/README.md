@@ -1,6 +1,5 @@
 #AA Assignment
 This is a web application which shows all the meetings of [alcohol anonymous](http://meetings.nyintergroup.org/) on a user friendly interface. 
-
 The application can be seen [here](http://35.165.216.202:8181/)
 
 ### How does it work?
@@ -22,8 +21,3 @@ This is a node project with the actual package management being done by npm. As 
    - `js` 
       - main.js - main javascript file for front end
    - `images` - images folder
-   
- 
-
-### API end point
-http://35.163.164.222:8181/

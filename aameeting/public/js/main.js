@@ -9,7 +9,8 @@ var AAMeetings = (function(){
       return (Math.abs(selectedDay-mt.day)*24*60+mt.hrs*60+mt.minutes);
     }
 
-    /** Initialises the map ny state
+    /** Initialises the map. As of now it point to the whole ny state.
+    * 
     **/
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {

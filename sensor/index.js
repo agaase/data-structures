@@ -13,12 +13,12 @@ app.use(cors());
 app.set('port', 8383);
 
 
-//rendering the home page
-app.get("/data",function(request, response) {
-    DBOp.fetchData(function(d){
-      response.end(JSON.stringify({"data" : d, "total" : d.length}));
-    });
-});
+// This gets all of the data; not a good idea to expose.
+// app.get("/data",function(request, response) {
+//     DBOp.fetchData(function(d){
+//       response.end(JSON.stringify({"data" : d, "total" : d.length}));
+//     });
+// });
 
 //rendering the home page
 app.get("/events",function(request, response) {

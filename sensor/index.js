@@ -21,16 +21,16 @@ app.set('port', 8383);
 // });
 
 //rendering the home page
-app.get("/events",function(request, response) {
-    DBOp.fetchEvents(function(d){
+app.get("/sessions",function(request, response) {
+    DBOp.fetchSessions(function(d){
       response.end(JSON.stringify(d));
     });
 });
 
 
 //rendering the home page
-app.get("/events/:event",function(request, response) {
-    DBOp.fetchEventData(request.params.event,function(d){
+app.get("/sessions/:session",function(request, response) {
+    DBOp.fetchSessionData(request.params.session,function(d){
       response.end(JSON.stringify(d));
     });
 });

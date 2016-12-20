@@ -2,12 +2,12 @@ var SensorGPS = (function(){
     var map, dayss = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     var selectedEvent, graphs;
    
-    function fetchEvents(callback){
+    function fetchSessions(callback){
       $.ajax({
            method: "GET",
            data: null,
            contentType: 'application/json',
-           url: "/events",
+           url: "/sessions",
          })
          .done(function(data) {
            data  =  JSON.parse(data);
@@ -97,7 +97,7 @@ var SensorGPS = (function(){
           "diff"  : diffLong
         });
       }
-      
+
       renderGraph(graphs.append("g"),arrLat,0.00039199999999794954/2,marginTop,hi,ww,"latitude");
       marginTop += margin+hi;
 
@@ -133,12 +133,12 @@ var SensorGPS = (function(){
       return geoloc;
     }
 
-    function fetchEventData(callback){
+    function fetchSessionData(callback){
       $.ajax({
            method: "GET",
            data: null,
            contentType: 'application/json',
-           url: "/events/"+selectedEvent,
+           url: "/sessions/"+selectedEvent,
          })
          .done(function(data) {
            data  =  JSON.parse(data);
@@ -146,13 +146,13 @@ var SensorGPS = (function(){
          });
     }
 
-    function initEvents(){
+    function initSessions(){
       $(".events .event").on("click",function(){
           $(".events .event").removeClass("active");
           $(".graph svg").empty();
           $(this).addClass("active");
           selectedEvent = $(this).text();
-          fetchEventData(function(d){
+          fetchSessionData(function(d){
             renderGraphs(d);
           });
       });
@@ -172,9 +172,9 @@ var SensorGPS = (function(){
 
       init : function(){
         initHTML();
-        fetchEvents(function(){
-          initEvents();
-          fetchEventData(function(d){
+        fetchSessions(function(){
+          initSessions();
+          fetchSessionData(function(d){
             renderGraphs(d);
           });
         });

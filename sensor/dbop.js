@@ -11,6 +11,7 @@ var DBOp = (function(){
     var ep = 'gps.ce0y2lzh69ye.us-west-2.rds.amazonaws.com:5432'; // aws db endpoint
     var conString = "postgres://" + un + ":" + pw + "@" + ep + "/" + db;
 
+    // These are all the queries. In this, a 'session' is referenced as 'event'.
     var createTableQuery = "CREATE TABLE laptop_position (timestamp bigint, geo_location text, angle decimal, altitude decimal, event text);"
     var selectAllQuery = "SELECT * FROM laptop_position;"
     var complexQuery = "SELECT * FROM laptop_position ORDER BY timestamp asc;";
@@ -70,7 +71,7 @@ var DBOp = (function(){
             });
         },
 
-        fetchEvents : function(callback){
+        fetchSessions : function(callback){
             runQ(uniqueEvents,function(e,r){
                 if(e){
                     console.log(e);
@@ -79,7 +80,7 @@ var DBOp = (function(){
             })
         },
 
-        fetchEventData : function(event,callback){
+        fetchSessionData : function(event,callback){
             runQ(eventData+"'"+event+"'",function(e,r){
                 if(e){
                     console.log(e);

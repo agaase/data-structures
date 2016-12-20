@@ -49,7 +49,7 @@ var AAMeetings = (function(){
             "minutes" : minutes
            }),
            contentType: 'application/json',
-           url: "/data",
+           url: "/meetings",
          })
          .done(function(data) {
            data  =  JSON.parse(data);
@@ -126,7 +126,6 @@ var AAMeetings = (function(){
     }
 
     return {
-
       init : function(){
         //Making sure I have NYC time and date
         currentTime = new Date();
@@ -134,8 +133,7 @@ var AAMeetings = (function(){
         initMap();
         initHTML();
         fetchData(currentTime.getDay(),currentTime.getHours(),currentTime.getMinutes());
-      },
-
+      }
     }
 })();
 

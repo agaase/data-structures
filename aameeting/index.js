@@ -20,19 +20,8 @@ app.use(cors());
 //Setting the port where the server will listen to
 app.set('port', 8181);
 
-
-//rendering the home page
-app.get("/data",function(request, response) {
-    AAData.fetchData(function(data){
-    	//This is how we return back something to a request. 
-    	//In this case Iam just returning the string representation of my json data.
-        response.end(JSON.stringify(data));
-    });
-});
-
-
-
-app.post("/data",function(request,response){
+//This is the api end point
+app.post("/meetings",function(request,response){
 	AAData.fetchDayMeetings(function(data){
     	//This is how we return back something to a request. 
     	//In this case Iam just returning the string representation of my json data.
@@ -40,14 +29,6 @@ app.post("/data",function(request,response){
     },request.body.day,request.body.hrs,request.body.minutes);
 });
 
-//rendering the home page
-app.get("/data/day",function(request, response) {
-    AAData.fetchDayMeetings(function(data){
-    	//This is how we return back something to a request. 
-    	//In this case Iam just returning the string representation of my json data.
-        response.end(JSON.stringify(data));
-    });
-});
 
 //Starting the server
 app.listen(app.get('port'), function() {

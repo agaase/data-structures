@@ -1,0 +1,46 @@
+$bg-color: #f9f9f9;
+$main: #575757;
+$main-light: #ddd;
+
+body,html{
+	height: 100%;
+	padding: 0;
+	background-color: $bg-color;
+	color: $main;
+}
+
+.left{
+    .page-header{
+    	height: 15vh;
+    	padding-top: 5vh;
+    	padding-left: 5vh;
+    	overflow: hidden;
+    }
+	.graph {
+	  height: 75vh;
+	  margin-top: 5vh;
+	  margin-left: 5vh;
+	  border: 2px solid $main;
+	  overflow: scroll;
+	  svg{
+	  	overflow: scroll;
+	  }
+	}	
+}
+.right{
+	.events{
+		height: 75vh;
+		margin-top: 20vh;
+		overflow: scroll;
+		.event{
+			cursor: pointer;
+			padding: 15px;
+			border-bottom: 1px solid $main-light;
+			position:relative;
+			&.active{
+				background-color: $main-light;
+			}
+		}
+		
+	}
+}

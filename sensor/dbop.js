@@ -11,10 +11,11 @@ var DBOp = (function(){
     var ep = 'gps.ce0y2lzh69ye.us-west-2.rds.amazonaws.com:5432'; // aws db endpoint
     var conString = "postgres://" + un + ":" + pw + "@" + ep + "/" + db;
 
-    var dropTable = "DROP TABLE IF EXISTS laptop_position;"
     var createTableQuery = "CREATE TABLE laptop_position (timestamp bigint, geo_location text, angle decimal, altitude decimal, event text);"
     var selectAllQuery = "SELECT * FROM laptop_position;"
-    var complexQuery = "SELECT * FROM laptop_position ORDER BY timestamp asc"
+    var complexQuery = "SELECT * FROM laptop_position ORDER BY timestamp asc;";
+    var uniqueEvents = "SELECT DISTINCT event FROM laptop_position;";
+    var eventData = "SELECT * FROM laptop_position WHERE event=";
 
     /**
     This is where modify the insert to insert all values
@@ -69,9 +70,31 @@ var DBOp = (function(){
             });
         },
 
+        fetchEvents : function(callback){
+            runQ(uniqueEvents,function(e,r){
+                if(e){
+                    console.log(e);
+                }
+                callback(r.rows);
+            })
+        },
+
+        fetchEventData : function(event,callback){
+            runQ(eventData+"'"+event+"'",function(e,r){
+                if(e){
+                    console.log(e);
+                }
+                callback(r.rows);
+            })
+        },
+
         fetchData : function(callback){
+            console.log("running query");
             runQ(complexQuery,function(e,r){
-                    if(callback){
+                    if(e){
+                        console.log(e);
+                    }
+                    else if(callback){
                         callback(r.rows);
                     }
                 });

@@ -2,8 +2,6 @@ var five = require("johnny-five");
 var board = new five.Board();
 var DBOp = require("./dbop.js");
 
-// DBOp.createTable();
-
 board.on("ready", function() {
   /*
    * This is the simplest initialization
@@ -16,7 +14,7 @@ board.on("ready", function() {
     }
   });
 
-  var data = [];
+  var data = [], ct=0;
   // If latitude, longitude, course or speed change log it
   gps.on("change", function() {
     var obj = {
@@ -24,16 +22,20 @@ board.on("ready", function() {
       "altitude" : parseFloat(this.altitude),
       "angle" : parseFloat(this.course),
       "date" : new Date().getTime(),
-      "event" : "12_12_2016_2235_at_home_studying_bed"
+      "event" : "12_19_2016_0922_at_home_studying_table"
     };
     // console.log(obj);
-    if(data.length >=10){
-      console.log("calling insert");
+    if(data.length >1){
+      console.log("calling insert: "+data.length+"records");
       DBOp.insertIntoTable(data);
       data = [];
-      DBOp.fetchData();
+      // DBOp.fetchData();
     }
-    data.push(obj);
+    if(ct>5){
+      data.push(obj);
+      ct=0;  
+    }
+    ct++;
   });
   
 });

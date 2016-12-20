@@ -1,0 +1,33 @@
+body, html {
+  height: 100%;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #575757; }
+
+.left .page-header {
+  height: 15vh;
+  padding-top: 5vh;
+  padding-left: 5vh;
+  overflow: hidden; }
+.left .graph {
+  height: 75vh;
+  margin-top: 5vh;
+  margin-left: 5vh;
+  border: 2px solid #575757;
+  overflow: scroll; }
+  .left .graph svg {
+    overflow: scroll; }
+
+.right .events {
+  height: 75vh;
+  margin-top: 20vh;
+  overflow: scroll; }
+  .right .events .event {
+    cursor: pointer;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    position: relative; }
+    .right .events .event.active {
+      background-color: #ddd; }
+
+/*# sourceMappingURL=main.css.map */

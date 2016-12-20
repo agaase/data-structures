@@ -33,9 +33,9 @@ var AAData = (function(){
                 "name" : name,
                 "address" : doc.address,
                 "geoAddress" : geo_address,
-		"time" : doc.time,
-		"latLong" : doc.latLong,
-		"types" : doc.types
+            		"time" : doc.time,
+            		"latLong" : doc.latLong,
+            		"types" : doc.types
                });
             } else {
                db.close();

@@ -12,7 +12,7 @@ app.set('port', 8383);
 //rendering the home page
 app.get("/",function(request, response) {
     DBOp.fetchData(function(d){
-      response.end(JSON.stringify(d));
+      response.end(JSON.stringify({"data" : d, "total" : d.length}));
     });
 });
 //Starting the server

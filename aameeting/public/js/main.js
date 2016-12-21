@@ -88,7 +88,8 @@ var AAMeetings = (function(){
                   $.each(loc.meetings,function(ii,meeting){
                     html += "<div class='meeting'>";
                     html += "<div class='primary'>" + "<div class='name'>"+meeting.name+",</div>";
-                    html += "<div class='time'>"+(Math.abs(day - meeting.time.day) > 0 ? dayss[meeting.time.day]+"," : "")+(meeting.time.hrs >= 12 ? (meeting.time.hrs == 12 ? "1" : meeting.time.hrs-12) +":" + meeting.time.minutes+"pm" :  meeting.time.hrs +(meeting.time.minutes ? ":"+meeting.time.minutes : "")+ "am"  )+"</div>";
+                    var mins = (meeting.time.minutes ? ":"+meeting.time.minutes : "");
+                    html += "<div class='time'>"+(Math.abs(day - meeting.time.day) > 0 ? dayss[meeting.time.day]+"," : "")+(meeting.time.hrs >= 12 ? (meeting.time.hrs == 12 ? "12" : meeting.time.hrs-12) + mins+"pm" :  meeting.time.hrs +mins+ "am"  )+"</div>";
                     html += "</div>";
                     html += "<div class='secondary'>" + "<div class='address'>*"+meeting.types+"</div></div>";
                     html += "</div>";
@@ -123,14 +124,15 @@ var AAMeetings = (function(){
         });
         $(".meetings").html("");
         var day = parseInt($(this).attr("data-day"));
-
-        fetchData(day,day==currentTime.getDay() ? currentTime.getHours() : 4, day==currentTime.getDay() ? currentTime.getMinutes() : 0 );  
+        //If it is current then give current hr and minutes, else the zeroth time mins and hours
+        fetchData(day,day==currentTime.getDay() ? currentTime.getHours() : 0, day==currentTime.getDay() ? currentTime.getMinutes() : 0 );  
       })
     }
 
     return {
       init : function(){
         //Making sure I have NYC time and date
+        //Subtracting current time offest and then adding NY time zone offset
         currentTime = new Date();
         currentTime = new Date(currentTime.getTimezoneOffset()*60*1000+currentTime.getTime() - 300*60*1000);
         initMap();

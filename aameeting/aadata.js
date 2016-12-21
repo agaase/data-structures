@@ -27,55 +27,28 @@ var AAData = (function(){
    }
 
   return {
-
     fetchDayMeetings : function(callback,day,hrs,minutes){
       MongoClient.connect(url, function(err, db) {
         if (err) {return console.dir(err);}
-        console.log(hrs);
+          //This is the aggregate query that returns all the records
           var q = { 
             $or : [ 
-              {"time.day" : day,"time.hrs" : { $gte : 12+hrs}, "time.minutes" : { $gte : minutes}},
+              {"time.day" : day,"time.hrs" : { $gte : hrs}, "time.minutes" : { $gte : minutes}},
               {"time.day" : ((day+1) > 6 ? 0 : (day+1)),"time.hrs" : { $lt : 4} } 
             ]
           };
-          // var cursor = db.collection('meetings').find(q).sort({ "time.hrs" : 1, "time.minutes": 1 });
           var coll = db.collection('meetings');
           coll.aggregate([
               {$match: q}
             , {$group : { _id : "$address", meetings: { $push: "$$ROOT" } } }
           ]).toArray(function(err, docs) {
             db.close();
+            //Going to sort every location on basis of first meeting time.
             docs = docs.sort(function(a,b){
               return absWeekTime(day,a.meetings[0].time) - absWeekTime(day,b.meetings[0].time);
              });
             callback(docs);
           });
-      });
-    },
-    
-    fetchData : function(callback){
-      MongoClient.connect(url, function(err, db) {
-        if (err) {return console.dir(err);}
-        var cursor = db.collection('meetings').find();
-        var data = [];
-        cursor.each(function(err, doc) {
-            if (doc != null) {
-               var name = cleanName(doc.name);
-               var geo_address = geoAddress(doc.address);
-               data.push({
-                "name" : name,
-                "address" : doc.address,
-                "geoAddress" : geo_address,
-            		"time" : doc.time,
-            		"latLong" : doc.latLong,
-            		"types" : doc.types
-               });
-            } else {
-               db.close();
-               callback(data);
-            }
-         });
-        
       });
     }
   }

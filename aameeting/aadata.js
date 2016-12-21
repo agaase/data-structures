@@ -30,10 +30,15 @@ var AAData = (function(){
     fetchDayMeetings : function(callback,day,hrs,minutes){
       MongoClient.connect(url, function(err, db) {
         if (err) {return console.dir(err);}
+
           //This is the aggregate query that returns all the records
+          //First OR is whether current time is today and the hr clock is greater than current clock
+          //Second OR is whether current time is today, the hr clock is equal to current clock and minutes clock is greater than current clock mins
+          //Third OR is whether current time is tomorrow, the hr clock is less than 4
           var q = { 
             $or : [ 
-              {"time.day" : day,"time.hrs" : { $gte : hrs}, "time.minutes" : { $gte : minutes}},
+              {"time.day" : day,"time.hrs" : { $gt : hrs}},
+              {"time.day" : day,"time.hrs" : hrs, "time.minutes" : { $gte : minutes}},
               {"time.day" : ((day+1) > 6 ? 0 : (day+1)),"time.hrs" : { $lt : 4} } 
             ]
           };
@@ -43,6 +48,7 @@ var AAData = (function(){
             , {$group : { _id : "$address", meetings: { $push: "$$ROOT" } } }
           ]).toArray(function(err, docs) {
             db.close();
+            console.log(day + "--" + hrs+":"+minutes+" ---"+docs.length);
             //Going to sort every location on basis of first meeting time.
             docs = docs.sort(function(a,b){
               return absWeekTime(day,a.meetings[0].time) - absWeekTime(day,b.meetings[0].time);

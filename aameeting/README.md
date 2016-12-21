@@ -1,7 +1,7 @@
 #AA Assignment
 
 ##AA Meetings
-This is a web application which shows all the meetings of [alcohol anonymous](http://meetings.nyintergroup.org/) on a user friendly interface. 
+This is a web application which shows all the meetings of [alcoholics anonymous](http://meetings.nyintergroup.org/) on a user friendly interface. 
 The application can be seen [here](http://35.165.216.202:8181/)
 
 ### How does it work?

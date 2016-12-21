@@ -7,7 +7,10 @@ With this web application I try to analyse how I use computer is used physically
 The application can be seen [here](http://35.165.216.202:8383/)
 
 ### How does it work?
-The application shows the timeline of a session for all the parameters. For example, If I studied for 30 minutes the graph will show the activity of altitude, lat, long and angle. Similarly there are many other sessions like this that are shown. Each session has a name which is basically a coded name with different parts. For e.g a session with name `12_18_2016_2234_at_home_watching_bed` means - 
+The application shows the timeline of a session for all the parameters. The data is recorded using the Arduino GPS sensor which I taped up to my laptop lid while Iam using it. ![PREVIEW](https://dl.dropbox.com/s/uocfsfaafb9n2ds/2016-12-17%2007.49.16.jpg?dl=0)
+
+
+For example, If I studied for 30 minutes the graph will show the activity of altitude, lat, long and angle. Similarly there are many other sessions like this that are shown. Each session has a name which is basically a coded name with different parts. For e.g a session with name `12_18_2016_2234_at_home_watching_bed` means - 
  1. `12_18_2016_2234` - The start time of the session. 10:34pm, 12 Dec, 2016
  2. `at_home` - Location of activity
  3. `watching` - activity type

@@ -13,7 +13,7 @@ This is a node project with the actual package management being done by npm. As 
 ### Codebase
 
  - `package.json` - the package file where all node dependencies are list
- - `index.js` - Server code where the API requests are handled. Right now, it just handles a single request: /meetings.
+ - `index.js` - Server code where the API requests are handled. Right now, it just handles a single POST request: /meetings.
  - `aadata.js` - This is developed as a custom node module which handles all the data related operations. It fetches the data from mongodb, customizes and sends it back to whoever calls it.
  - `public/` - folder where all the static files (html,css, js) reside.
    - `index.html` - the root html for the web application.

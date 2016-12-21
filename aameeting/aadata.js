@@ -31,9 +31,10 @@ var AAData = (function(){
     fetchDayMeetings : function(callback,day,hrs,minutes){
       MongoClient.connect(url, function(err, db) {
         if (err) {return console.dir(err);}
+        console.log(hrs);
           var q = { 
             $or : [ 
-              {"time.day" : day,"time.hrs" : { $gte : 17}, "time.minutes" : { $gte : 10}},
+              {"time.day" : day,"time.hrs" : { $gte : 12+hrs}, "time.minutes" : { $gte : minutes}},
               {"time.day" : ((day+1) > 6 ? 0 : (day+1)),"time.hrs" : { $lt : 4} } 
             ]
           };

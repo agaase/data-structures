@@ -122,7 +122,9 @@ var AAMeetings = (function(){
           marker.setMap(null);
         });
         $(".meetings").html("");
-        fetchData(parseInt($(this).attr("data-day")),4,0);  
+        var day = parseInt($(this).attr("data-day"));
+
+        fetchData(day,day==currentTime.getDay() ? currentTime.getHours() : 4, day==currentTime.getDay() ? currentTime.getMinutes() : 0 );  
       })
     }
 

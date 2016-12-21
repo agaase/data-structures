@@ -1,9 +1,7 @@
 var pg = require('pg');
 var fs = require('fs');
 
-
 var DBOp = (function(){
-
     // connection string
     var un = process.env.PG_USERNAME; // aws db username
     var pw = process.env.PG_PASSWORD; // aws db password
@@ -15,7 +13,7 @@ var DBOp = (function(){
     var createTableQuery = "CREATE TABLE laptop_position (timestamp bigint, geo_location text, angle decimal, altitude decimal, event text);"
     var selectAllQuery = "SELECT * FROM laptop_position;"
     var complexQuery = "SELECT * FROM laptop_position ORDER BY timestamp asc;";
-    var uniqueEvents = "SELECT DISTINCT event FROM laptop_position;";
+    var uniqueSessions = "SELECT DISTINCT event FROM laptop_position;";
     var eventData = "SELECT * FROM laptop_position WHERE event=";
 
     /**
@@ -71,8 +69,10 @@ var DBOp = (function(){
             });
         },
 
+        /**
+        * Fetches all the unique sessions*/
         fetchSessions : function(callback){
-            runQ(uniqueEvents,function(e,r){
+            runQ(uniqueSessions,function(e,r){
                 if(e){
                     console.log(e);
                 }
@@ -80,6 +80,9 @@ var DBOp = (function(){
             })
         },
 
+        /**
+        * Fetches one session data
+        **/
         fetchSessionData : function(event,callback){
             runQ(eventData+"'"+event+"'",function(e,r){
                 if(e){

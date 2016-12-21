@@ -48,7 +48,7 @@ var AAData = (function(){
             , {$group : { _id : "$address", meetings: { $push: "$$ROOT" } } }
           ]).toArray(function(err, docs) {
             db.close();
-            console.log(day + "--" + hrs+":"+minutes+" ---"+docs.length);
+            // console.log(day + "--" + hrs+":"+minutes+" ---"+docs.length);
             //Going to sort every location on basis of first meeting time.
             docs = docs.sort(function(a,b){
               return absWeekTime(day,a.meetings[0].time) - absWeekTime(day,b.meetings[0].time);

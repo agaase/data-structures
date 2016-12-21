@@ -46,7 +46,7 @@ var AAMeetings = (function(){
            method: "POST",
            data: JSON.stringify({
             "day" : day,
-            "hrs" : hrs > 12 ? hrs - 12 :  hrs,
+            "hrs" : hrs,
             "minutes" : minutes
            }),
            contentType: 'application/json',
